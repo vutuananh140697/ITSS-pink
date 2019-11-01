@@ -54,14 +54,15 @@ ActiveRecord::Schema.define(version: 20191120153801) do
   end
 
   create_table "schedule_items", force: :cascade do |t|
-    t.text     "category_name"
     t.text     "description"
     t.text     "option"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "schedule_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_schedule_items_on_category_id"
     t.index ["schedule_id"], name: "index_schedule_items_on_schedule_id"
   end
 

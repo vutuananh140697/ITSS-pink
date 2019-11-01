@@ -32,12 +32,14 @@
                 
             </div>
         </div>
+        <div class="col-sm-8 mx-auto">
         <div id="list-new-schedule-items">
         </div>  
         <% @schedule_items.each  do |s| %>
-          <%= render :partial => 'schedule_item', :locals => {:schedule_item => s} %>
+          <%= render :partial => "schedule_item", :locals => {:schedule_item => s } %>
         <% end %>
+        </div>
   </div>
 </div>
 <div>
-<%= render :partial => 'create_schedule_item'%>
+<%= render :partial => "create_schedule_item" %>

@@ -186,9 +186,7 @@ input, textarea, select, .uneditable-input {
   width: 260px; 
   height: 350px;
 }
-.resize-slide{
-  height: 450px !important;
-}
+
 .toast {
     opacity: 1 !important;
 }
@@ -254,4 +252,27 @@ input, textarea, select, .uneditable-input {
 
 .review-image{
   float:left;
+}
+
+.search_service_btn{
+	background: #4885a2;
+	    background-color: $yellow - 20;
+	    border: none;
+	    width: 100%;
+	    text-align: center;
+	    text-decoration: none;
+	    padding: .6em 1.7em .6em 1.7em !important;
+	    border-radius: 25px;
+	    text-transform: uppercase !important;
+	    font-size: 14px;
+	    margin-top: 20px;
+		@include transition();
+
+		&:hover{
+			background: $yellow - 60;
+		}
+}
+.resize-logo{
+  width: 60px !important;
+  height: 60px !important;
 }

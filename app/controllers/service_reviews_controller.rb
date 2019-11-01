@@ -4,11 +4,13 @@ class ServiceReviewsController < ApplicationController
    
   def create
     @review = current_user.service_reviews.build review_params
-    if @review.save 
+    if @review.save
+      if params[:review_images]
         params[:review_images]["image"].each do |a|
           @review_image = @review.review_images.create!(link: a)
         end
         flash[:success] = t "flash.success.review_created"
+      end
     else
         flash[:danger] = t "flash.success.create_review_fail"
     end

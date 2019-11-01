@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'service_reviews/create'
-
   root "home#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers:{omniauth_callbacks: "users/omniauth_callbacks"}
