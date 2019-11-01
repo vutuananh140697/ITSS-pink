@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(version: 20191106125813) do
     t.text     "option"
     t.float    "price"
     t.integer  "provider_id"
-    t.integer  "categories_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["categories_id"], name: "index_services_on_categories_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_services_on_category_id"
     t.index ["provider_id"], name: "index_services_on_provider_id"
   end
 
