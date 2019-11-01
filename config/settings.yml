@@ -1,0 +1,6 @@
+telephone: 0123.456.789
+address: "streets ..., city"
+email_tripbrick: "tripbrick@gmail.com"
+user:
+ avatar_size: 50
+ default_avatar: "default-avatar.png"
