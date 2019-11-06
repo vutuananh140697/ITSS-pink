@@ -55,9 +55,9 @@ GEM
     bootstrap-glyphicons (0.0.1)
       railties (>= 3.0)
       sass (>= 3.2)
-    bootstrap-sass (3.3.7)
+    bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+      sassc (>= 2.0.0)
     builder (3.2.3)
     byebug (11.0.1)
     carrierwave (2.0.2)
@@ -271,7 +271,7 @@ DEPENDENCIES
   angularjs-rails
   bootsnap (>= 1.1.0)
   bootstrap-glyphicons
-  bootstrap-sass (= 3.3.7)
+  bootstrap-sass (= 3.4.1)
   byebug
   carrierwave
   coffee-rails (~> 4.2)
