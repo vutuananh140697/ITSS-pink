@@ -48,3 +48,26 @@ Category.create!([
 		description: "Movie Theater",
 	},
 ])
+
+Place.create!([
+	    {
+    		name: "Hà Nội",
+    		description: "Hà Nội nghìn năm văn vở"
+    	},
+    	{
+    		name: "Nam Định",
+    		description: "Quê của Vũ Tuấn Anh"
+    	},
+    	{
+    		name: "Sa Pa",
+    		description: "lạnh vl"
+    	},
+    	{
+    		name: "Hồ Chí Minh",
+    		description: "abc"
+    	},
+    	{
+    		name: "Đà Nẵng",
+    		description: "Đà Nẵng nghìn năm văn vở"
+    	},
+    ])
