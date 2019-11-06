@@ -10,7 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191031100144) do
+ActiveRecord::Schema.define(version: 20191106034825) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string   "email"
+    t.string   "name"
+    t.text     "description"
+    t.string   "address"
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "schedule_items", force: :cascade do |t|
+    t.text     "description"
+    t.text     "option"
+    t.text     "time"
+    t.integer  "schedule_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["schedule_id"], name: "index_schedule_items_on_schedule_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_schedules_on_user_id"
+  end
+
+  create_table "service_bookings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "schedule_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["schedule_id"], name: "index_service_bookings_on_schedule_id"
+    t.index ["user_id"], name: "index_service_bookings_on_user_id"
+  end
+
+  create_table "service_images", force: :cascade do |t|
+    t.string   "link"
+    t.integer  "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_service_images_on_service_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.text     "description"
+    t.text     "option"
+    t.float    "price"
+    t.integer  "provider_id"
+    t.integer  "categories_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["categories_id"], name: "index_services_on_categories_id"
+    t.index ["provider_id"], name: "index_services_on_provider_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -22,6 +86,7 @@ ActiveRecord::Schema.define(version: 20191031100144) do
     t.datetime "updated_at",                          null: false
     t.string   "username"
     t.string   "avatar"
+    t.string   "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
