@@ -49,39 +49,6 @@ Category.create!([
 	},
 ])
 
-providers = Provider.order(:id).take(5)
-categories = Category.order(:id)
-providers.each do |provider|
-	categories.each do |category|
-		case category.id
-			when 1
-				service = Service.create!(description: Faker::Restaurant.description, option:"",provider_id: provider.id,category_id: category.id);
-				(1..8).to_a.shuffle.take(3).each do |i|
-        			ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/hotels/#{i}.jpg",
-                       service_id: service.id
-                end
-			when 2
-				service = Service.create!(description: Faker::Restaurant.description, option:"",provider_id:provider.id,category_id:category.id);
-				(1..11).to_a.shuffle.take(2).each do |i|
-		        	ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/food/#{i}.jpg",
-		                       service_id: service.id
-                end
-			when 3
-			when 4
-		end
-	end
-end
-
-users = User.order(:id).take(5)
-services = Service.order(:id).take(5)
-users.each do |user|
-	schedule = Schedule.create!(description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), user_id: user.id)
-	services.each do |service|
-		ServiceBooking.create!(user_id: user.id, schedule_id: schedule.id)
-	end	
-end
-
-
 Place.create!([
 	    {
     		name: "Hà Nội",
@@ -104,3 +71,39 @@ Place.create!([
     		description: "Đà Nẵng nghìn năm văn vở"
     	},
     ])
+
+providers = Provider.order(:id).take(5)
+categories = Category.order(:id)
+providers.each do |provider|
+	categories.each do |category|
+		case category.id
+			when 1
+				service = Service.create!(description: Faker::Restaurant.description, option:"",provider_id: provider.id,category_id: category.id, 
+					place_id: rand(1..5));
+				(1..8).to_a.shuffle.take(3).each do |i|
+        			ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/hotels/#{i}.jpg",
+                       service_id: service.id
+                end
+			when 2
+				service = Service.create!(description: Faker::Restaurant.description, option:"",provider_id: provider.id,category_id: category.id,
+					place_id: rand(1..5));
+				(1..11).to_a.shuffle.take(2).each do |i|
+		        	ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/food/#{i}.jpg",
+		                       service_id: service.id
+                end
+			when 3
+			when 4
+		end
+	end
+end
+
+users = User.order(:id).take(5)
+services = Service.order(:id).take(5)
+users.each do |user|
+	schedule = Schedule.create!(description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), user_id: user.id)
+	services.each do |service|
+		ServiceBooking.create!(user_id: user.id, schedule_id: schedule.id)
+	end	
+end
+
+
