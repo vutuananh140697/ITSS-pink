@@ -1,3 +1,4 @@
+<% if @services.nil? %>
 <div class="full-row packages_home">
   <div class="title-row">
     <div class="title-row-content">
@@ -43,3 +44,38 @@
     
   </div>
 </div>
+<% elsif @place.nil? %>
+
+<div class="container packages_home">
+  <div class="package_content">
+    
+        
+    <% @services.each do |services_by_place| %>
+      <% services_by_place.each do |service| %>
+        
+      
+          <div class="col-xs-6 col-sm-6 col-md-4 package_item">
+            <div class="package_item_content">
+                <%= link_to image_tag(service.service_images.first.link,  class: "img-responsive", style: "height: 300px; width:400px"), "#" %>
+                <div class="thumb_content fullwidth">
+                    <div class="thumb_title">
+                          Provider: <%= service.provider.name %>
+                        <div class="tour_country">
+                          Destination: <%= service.place.name %>
+                        </div>
+                           From: <%= service.start_time %></br>
+                           To: <%= service.end_time %>
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+      
+      <% end %>
+    <% end %>
+    
+  </div>
+</div>
+  
+<% end %>
+
