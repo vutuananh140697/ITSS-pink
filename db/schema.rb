@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191106034825) do
+ActiveRecord::Schema.define(version: 20191106125813) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string   "name"
+    t.string   "string"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -69,10 +77,10 @@ ActiveRecord::Schema.define(version: 20191106034825) do
     t.text     "option"
     t.float    "price"
     t.integer  "provider_id"
-    t.integer  "categories_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["categories_id"], name: "index_services_on_categories_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_services_on_category_id"
     t.index ["provider_id"], name: "index_services_on_provider_id"
   end
 

@@ -5,8 +5,7 @@ class CreateServices < ActiveRecord::Migration[5.0]
       t.text :option
       t.float :price
       t.references :provider, foreign_key: true
-      t.references :categories, foreign_key: true
-
+      t.references :category, foreign_key: true
       t.timestamps
     end
   end
