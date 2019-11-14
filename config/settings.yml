@@ -5,3 +5,4 @@ user:
  avatar_size: 50
  default_avatar: "default-avatar.png"
 RAILS_ADMIN_PAGINATION: 5
+popular_places: 6

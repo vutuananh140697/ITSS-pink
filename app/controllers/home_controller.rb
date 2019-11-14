@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @travel_places = Place.popular_places
   end
   
   def search
