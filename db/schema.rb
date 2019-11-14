@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191113102607) do
+ActiveRecord::Schema.define(version: 20191106125813) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20191113102607) do
 
   create_table "places", force: :cascade do |t|
     t.string   "name"
-    t.string   "string"
     t.text     "description"
+    t.string   "image_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20191113102607) do
   end
 
   create_table "schedules", force: :cascade do |t|
+    t.string   "name"
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
@@ -73,16 +74,17 @@ ActiveRecord::Schema.define(version: 20191113102607) do
   end
 
   create_table "services", force: :cascade do |t|
+    t.string   "name"
     t.text     "description"
     t.text     "option"
     t.float    "price"
-    t.integer  "provider_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "place_id"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer  "provider_id"
+    t.integer  "category_id"
+    t.integer  "place_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_services_on_category_id"
     t.index ["place_id"], name: "index_services_on_place_id"
     t.index ["provider_id"], name: "index_services_on_provider_id"

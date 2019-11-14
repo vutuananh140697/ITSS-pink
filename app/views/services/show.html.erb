@@ -1,0 +1,11 @@
+<% provide(:title,"Rooms")%>
+<%= render "layouts/search_form" %>
+<div class="full-row page-content">
+  <div class="container no-padding">
+    <div class="col-xs-12 col-sm-12 page-right">
+      <div class="filter-result">
+        <%= render :partial => "service_detail", :locals => {:service => @service} %>
+      </div>
+    </div>
+  </div>
+</div>
