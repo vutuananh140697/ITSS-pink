@@ -4,7 +4,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
   mount_uploader :avatar, AvatarUploader
   
-  has_many :schedule, dependent: :destroy
+  has_many :schedules, dependent: :destroy
   
   def self.new_with_session params, session
     super.tap do |user|

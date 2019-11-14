@@ -94,3 +94,12 @@ en:
   confirm_my_account: "Confirm my account"
   forget_pass: "Forget your password?"
   didnt_receive_mail: "Didn't receive confirmation instructions?"
+  flash:
+    danger:
+      user_not_found: "Cannot found this user!"
+      create_schedule_fail: "Create schedule fail!"
+    success:
+      schedule_created: "Create Schedule successful!"
+     
+  button:
+    create: "Create"
