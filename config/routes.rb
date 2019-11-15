@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :schedules, only: %i(index create destroy)
   end
   get "/search", to: "home#search"
+  get "services/:id" , to: "services#show"
 end

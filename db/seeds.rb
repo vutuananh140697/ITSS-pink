@@ -63,6 +63,11 @@ def time_rand from = 0.0, to = Time.now
   Time.at(from + rand * (to.to_f - from.to_f))
 end
 
+def price_rand (min = 0.0, max)
+    a = rand * (max-min) + min
+    a.round(2)
+end
+
 providers = Provider.order(:id).take(5)
 categories = Category.order(:id)
 places = Place.order(:id).take(5)
@@ -73,7 +78,7 @@ providers.each do |provider|
 				places.each do |place|
 					st = time_rand(Time.local(2019, 1, 1), Time.local(2019, 2, 1)).to_date
 					et = time_rand(Time.local(2019, 3, 1), Time.local(2019, 4, 1)).to_date
-					service = Service.create!(description: Faker::Restaurant.description, option:"",provider_id: provider.id,category_id: category.id,place_id: place.id,start_time: st,end_time: et );
+					service = Service.create!(name: Faker::Educator.course_name, description: Faker::Restaurant.description, option:"",provider_id: provider.id,category_id: category.id,place_id: place.id,start_time: st,end_time: et, price: price_rand(100,1000)  );
 					(1..8).to_a.shuffle.take(3).each do |i|
 	        			ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/hotels/#{i}.jpg",
 	                       service_id: service.id
@@ -81,7 +86,7 @@ providers.each do |provider|
                 end
 			when 2
 				places.each do |place|
-					service = Service.create!(description: Faker::Restaurant.description, option:"",provider_id:provider.id,category_id:category.id, place_id: place.id);
+					service = Service.create!(name: Faker::Educator.course_name, description: Faker::Restaurant.description, option:"",provider_id:provider.id,category_id:category.id, place_id: place.id,price: price_rand(100,1000));
 					(1..11).to_a.shuffle.take(2).each do |i|
 			        	ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/food/#{i}.jpg",
 			                       service_id: service.id

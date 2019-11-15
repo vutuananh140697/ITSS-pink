@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20191106125813) do
   end
 
   create_table "services", force: :cascade do |t|
+    t.string   "name"
     t.text     "description"
     t.text     "option"
     t.float    "price"
