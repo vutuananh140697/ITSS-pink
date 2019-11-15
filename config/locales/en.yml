@@ -100,6 +100,13 @@ en:
       create_schedule_fail: "Create schedule fail!"
     success:
       schedule_created: "Create Schedule successful!"
+      review_created: "Create review successful!"
      
   button:
     create: "Create"
+    save: "Save"
+    delete: "Delete"
+  dialog:
+    delete_review_confirm: "Are you sure to delete this review?"
+  label:
+    service_used_user: "used service"
