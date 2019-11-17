@@ -103,8 +103,11 @@ services = Service.order(:id).take(5)
 users.each do |user|
 	schedule = Schedule.create!(name: Faker::Restaurant.name, description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), user_id: user.id)
 	services.each do |service|
-		ServiceBooking.create!(user_id: user.id, schedule_id: schedule.id)
+		ServiceBooking.create!(user_id: user.id, service_id: service.id)
+		ServiceReview.create!(title:Faker::Lorem.sentence(word_count: 4, supplemental: true, random_words_to_add: 4) ,
+		content: Faker::Lorem.sentence(word_count: 10, supplemental: true, random_words_to_add: 10), user_id: user.id, service_id: service.id)
 	end	
+	
 end
 
 users = User.order(:id).take(5)
@@ -113,4 +116,3 @@ users.each do |user|
 		Schedule.create!(name: Faker::Restaurant.name, description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), user_id: user.id)
 	end
 end
-
