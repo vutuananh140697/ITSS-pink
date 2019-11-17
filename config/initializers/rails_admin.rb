@@ -97,7 +97,7 @@ RailsAdmin.config do |config|
         sort_reverse false
       end
       field :user_name
-      field :schedule_id
+      field :service_id
     end
   end
   

@@ -9,7 +9,7 @@ module UsersHelper
                  end
     image_tag avatar_url,
       alt: user.username,
-      class: "gravatar rounded-circle",
+      class: "gravatar img-circle",
       id: "img_prev",
       width: width,
       height: height
