@@ -8,11 +8,11 @@ class ServiceReviewsController < ApplicationController
         params[:review_images]["image"].each do |a|
           @review_image = @review.review_images.create!(link: a)
         end
+        flash[:success] = t "flash.success.review_created"
+    else
+        flash[:danger] = t "flash.success.create_review_fail"
     end
-    respond_to do |format|
-        format.html
-        format.js
-    end
+    redirect_back(fallback_location: root_path)
   end
   
   def destroy

@@ -20,7 +20,7 @@
 		<div class="review-block-description"><%= review_item.content %></div>
 		<div class="review-block-picture">
 			<% review_item.review_images.each do |img| %>
-				<%= image_tag(img.link,  class: "img-responsive", style: "height: 100px; width:100px")  %>
+				<%= image_tag(img.link,  class: "img-responsive review-image", style: "height: 100px; width:100px")  %>
 			<% end %>
 		</div>
 	</div>

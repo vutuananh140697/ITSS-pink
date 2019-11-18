@@ -7,7 +7,7 @@
     
         <div class="row" id="post-review-box" style="display:none;">
             <div class="col-md-12">
-                <%= form_for(current_user.service_reviews.build, remote: true) do |f| %>
+                <%= form_for(current_user.service_reviews.build ) do |f| %>
                     <div class="form-group animated">
                       <%= f.hidden_field :service_id, value: @service.id %>
                       <%= f.label :title, class: "col-form-label" %>
