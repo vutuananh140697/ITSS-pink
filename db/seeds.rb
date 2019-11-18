@@ -49,23 +49,49 @@ Category.create!([
 	},
 ])
 
+
+54.times do
+  random_number =  rand(1..10)
+  Place.create(
+    name: Faker::Address.city,
+	description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+	image_url: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/play_places/#{random_number}.jpg"
+	)
+end
+
+def time_rand from = 0.0, to = Time.now
+  Time.at(from + rand * (to.to_f - from.to_f))
+end
+
+def price_rand (min = 0.0, max)
+    a = rand * (max-min) + min
+    a.round(2)
+end
+
 providers = Provider.order(:id).take(5)
 categories = Category.order(:id)
+places = Place.order(:id).take(5)
 providers.each do |provider|
 	categories.each do |category|
 		case category.id
 			when 1
-				service = Service.create!(description: Faker::Restaurant.description, option:"",provider_id: provider.id,category_id: category.id);
-				(1..8).to_a.shuffle.take(3).each do |i|
-        			ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/hotels/#{i}.jpg",
-                       service_id: service.id
+				places.each do |place|
+					st = time_rand(Time.local(2019, 1, 1), Time.local(2019, 2, 1)).to_date
+					et = time_rand(Time.local(2019, 3, 1), Time.local(2019, 4, 1)).to_date
+					service = Service.create!(name: Faker::Educator.course_name, description: Faker::Restaurant.description, option:"",provider_id: provider.id,category_id: category.id,place_id: place.id,start_time: st,end_time: et, price: price_rand(100,1000)  );
+					(1..8).to_a.shuffle.take(3).each do |i|
+	        			ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/hotels/#{i}.jpg",
+	                       service_id: service.id
+	                end
                 end
 			when 2
-				service = Service.create!(description: Faker::Restaurant.description, option:"",provider_id:provider.id,category_id:category.id);
-				(1..11).to_a.shuffle.take(2).each do |i|
-		        	ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/food/#{i}.jpg",
-		                       service_id: service.id
-                end
+				places.each do |place|
+					service = Service.create!(name: Faker::Educator.course_name, description: Faker::Restaurant.description, option:"",provider_id:provider.id,category_id:category.id, place_id: place.id,price: price_rand(100,1000));
+					(1..11).to_a.shuffle.take(2).each do |i|
+			        	ServiceImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/food/#{i}.jpg",
+			                       service_id: service.id
+	                end
+	            end
 			when 3
 			when 4
 		end
@@ -75,32 +101,18 @@ end
 users = User.order(:id).take(5)
 services = Service.order(:id).take(5)
 users.each do |user|
-	schedule = Schedule.create!(description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), user_id: user.id)
+	schedule = Schedule.create!(name: Faker::Restaurant.name, description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), user_id: user.id)
 	services.each do |service|
-		ServiceBooking.create!(user_id: user.id, schedule_id: schedule.id)
+		ServiceBooking.create!(user_id: user.id, service_id: service.id)
+		ServiceReview.create!(title:Faker::Lorem.sentence(word_count: 4, supplemental: true, random_words_to_add: 4) ,
+		content: Faker::Lorem.sentence(word_count: 10, supplemental: true, random_words_to_add: 10), user_id: user.id, service_id: service.id)
 	end	
+	
 end
 
-
-Place.create!([
-	    {
-    		name: "Hà Nội",
-    		description: "Hà Nội nghìn năm văn vở"
-    	},
-    	{
-    		name: "Nam Định",
-    		description: "Quê của Vũ Tuấn Anh"
-    	},
-    	{
-    		name: "Sa Pa",
-    		description: "lạnh buốt"
-    	},
-    	{
-    		name: "Hồ Chí Minh",
-    		description: "abc"
-    	},
-    	{
-    		name: "Đà Nẵng",
-    		description: "Đà Nẵng nghìn năm văn vở"
-    	},
-    ])
+users = User.order(:id).take(5)
+users.each do |user|
+	5.times do
+		Schedule.create!(name: Faker::Restaurant.name, description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), user_id: user.id)
+	end
+end

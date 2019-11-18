@@ -1,6 +1,6 @@
 class ServiceBooking < ApplicationRecord
   belongs_to :user
-  belongs_to :schedule
+  belongs_to :service
   
   def user_name
     self.user.username

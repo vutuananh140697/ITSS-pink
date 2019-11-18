@@ -12,14 +12,10 @@
                     <label for="col-xs-12 start_date"><%= t "Date" %></label>
                     <div class="row">
                         <div class="col-xs-6 start_date_input">
-                            <input id="start_date" name="start_date" type="text" placeholder="From" class="form-control hasDatepicker">
-                            <input id="start_date_raw" name="start_date_raw" type="hidden">
-                            <i class="fa fa-calendar"></i>
+                            <%= date_field_tag :from, params[:from], :value => Time.now.strftime('%Y-%m-%d'), placeholder:"From", class:"form-control hasDatepicker"%>
                         </div>
                         <div class="col-xs-6 end_date_input">
-                            <input id="end_date" name="end_date" type="text" placeholder="To" class="form-control hasDatepicker">
-                            <input id="end_date_raw" name="end_date_raw" type="hidden">
-                            <i class="fa fa-calendar"></i>
+                            <%= date_field_tag :to, params[:to], placeholder:"To", class:"form-control hasDatepicker"%>
                         </div>
                     </div>
                 </div>
