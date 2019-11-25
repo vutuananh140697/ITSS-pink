@@ -8,3 +8,4 @@ RAILS_ADMIN_PAGINATION: 5
 popular_places: 6
 page:
  num_of_reviews: 5
+ num_of_services: 9

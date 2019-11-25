@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
   get "/search", to: "home#search"
+  get "services", to: "services#index"
+  get "services/categories/:category_id", to: "services#index", :as => :service_categories
   get "services/:id" , to: "services#show", :as => :service_details
   resources :service_reviews, only: %i(create destroy)
 end
