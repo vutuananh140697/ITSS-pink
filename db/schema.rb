@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191116133026) do
+ActiveRecord::Schema.define(version: 20191120153801) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -45,13 +45,23 @@ ActiveRecord::Schema.define(version: 20191116133026) do
     t.index ["service_review_id"], name: "index_review_images_on_service_review_id"
   end
 
+  create_table "schedule_item_images", force: :cascade do |t|
+    t.string   "link"
+    t.integer  "schedule_item_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["schedule_item_id"], name: "index_schedule_item_images_on_schedule_item_id"
+  end
+
   create_table "schedule_items", force: :cascade do |t|
+    t.text     "category_name"
     t.text     "description"
     t.text     "option"
-    t.text     "time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "schedule_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["schedule_id"], name: "index_schedule_items_on_schedule_id"
   end
 
