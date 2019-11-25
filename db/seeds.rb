@@ -49,7 +49,6 @@ Category.create!([
 	},
 ])
 
-
 54.times do
   random_number =  rand(1..10)
   Place.create(
@@ -110,6 +109,30 @@ users.each do |user|
 	
 end
 
+schedules = Schedule.order(:id)
+categories = Category.order(:id)
+schedules.each do |schedule|
+	categories.each do |category|
+		case category.id
+			when 1
+				st = time_rand(Time.local(2019, 1, 1), Time.local(2019, 2, 1)).to_date
+				et = time_rand(Time.local(2019, 3, 1), Time.local(2019, 4, 1)).to_date
+				schedule_item = ScheduleItem.create!(description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), option:"",start_time: st,end_time: et, schedule_id: schedule.id, category_name: category.name)
+				(1..11).to_a.shuffle.take(2).each do |i|
+			    	ScheduleItemImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/hotels/#{i}.jpg", schedule_item_id: schedule_item.id
+			    end
+			when 2
+				st = time_rand(Time.local(2019, 1, 1), Time.local(2019, 2, 1)).to_date
+				et = time_rand(Time.local(2019, 3, 1), Time.local(2019, 4, 1)).to_date
+				schedule_item = ScheduleItem.create!(description:  Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4), option:"",start_time: st,end_time: et, schedule_id: schedule.id, category_name: category.name)
+				(1..11).to_a.shuffle.take(2).each do |i|
+			    	ScheduleItemImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/food/#{i}.jpg", schedule_item_id: schedule_item.id
+			    end
+			when 3
+			when 4
+		end
+    end
+end
 users = User.order(:id).take(5)
 users.each do |user|
 	5.times do
