@@ -1,4 +1,4 @@
 class ScheduleItemImage < ApplicationRecord
-    mount_uploader :link ,Im
+    mount_uploader :link , AvatarUploader
     belongs_to :schedule_item
 end

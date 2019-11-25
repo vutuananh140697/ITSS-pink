@@ -109,5 +109,6 @@ en:
     delete: "Delete"
   dialog:
     delete_review_confirm: "Are you sure to delete this review?"
+    delete_schedule_item_confirm: "Are you sure to delete this item?"
   label:
     service_used_user: "used service"
