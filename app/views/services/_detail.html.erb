@@ -7,9 +7,7 @@
                         <%= service.name %>
                     </a>
                 </h3>
-                <p class="text-blue">
-                    <span class="fas fa-user-tie text-yellow"></span> Provider: <%= service.provider.name %>
-                </p>
+              
             </div>
         </div>
         <!-- .hotel-name -->
@@ -47,6 +45,14 @@
                         <% end %>
                     </ul>
                     <div class="col-xs-12 no-padding hotellist-price">
+                        <p class="text-blue">
+                            <span class=""></span> Provider: <%= service.provider.name %>
+                        </p>
+                        
+                        <p class="text-blue">
+                            <span class=""></span> Location: <%= service.place.name %>
+                        </p>
+                        
                         <h5 class="text-left text-blue"><strong>Start time:</strong> 
                             <% if service.start_time %>
                                 <%= service.start_time.strftime("%B %d, %Y") %>
@@ -57,8 +63,6 @@
                                 <%= service.end_time.strftime("%B %d, %Y") %>
                             <% end %>
                         </h5>
-                        <h2 class="text-left text-blue price-ht">USD <span class="text-yellow"><%= service.price %></span></h2>
-                        <a href="#" class="btn btn-yellow btn-select-room"><%= t "Book_now" %></a>
                     </div>
                     <div class="col-xs-12 no-padding hotel-slide-pay">
                         <p class="text-blue"><%= t "cards_accepted" %></p>
@@ -76,8 +80,3 @@
     </div>
     <!-- .hotel-head -->
 </div>
-<div class="hotellist-item hotel-detail">
-    <strong><h2><%= t "DESCRIPTION" %></h2></strong>
-    <%= service.description %>
-</div>
-

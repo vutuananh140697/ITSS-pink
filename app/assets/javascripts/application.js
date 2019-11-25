@@ -6,5 +6,3 @@
 //= require appTripbricks
 //= require toastr
 //= require toastr_flash
-//= require service_review
-//= require preview_image
