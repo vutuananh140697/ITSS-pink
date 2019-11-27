@@ -4,11 +4,19 @@
     <title>PinkTravel</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
-
   <body>
-    <%= yield %>
+    
+    <div id="wrapper">
+      <%= render "layouts/header" %>
+      <% flash.each do |message_type, message| %>
+        <%= hidden_field_tag "", message, class: "flash_msg #{message_type}" %>
+      <% end %>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,11 @@
+telephone: 0123.456.789
+address: "streets ..., city"
+email_tripbrick: "tripbrick@gmail.com"
+user:
+ avatar_size: 50
+ default_avatar: "default-avatar.png"
+RAILS_ADMIN_PAGINATION: 5
+popular_places: 6
+page:
+ num_of_reviews: 5
+ num_of_services: 9

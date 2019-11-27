@@ -1,0 +1,41 @@
+<% provide(:title,"Rooms")%>
+<body style="background: #eef3f7">
+  <div class="row">
+    <div class="md-stepper-horizontal orange">
+      <div class="md-step ok">
+        <div class="md-step-circle"><span>1</span></div>
+        <div class="md-step-title">Thông tin khách hàng</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step ok">
+        <div class="md-step-circle"><span>2</span></div>
+        <div class="md-step-title">Chi tiết thanh toán</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active">
+        <div class="md-step-circle"><span>3</span></div>
+        <div class="md-step-title">Đã xác nhận đặt dịch vụ!</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" >
+        <div class="col-md-12">
+            <div class=" review_listing">
+                <h3>Xác nhận đặt dịch vụ</h3>
+                <hr>
+                <div class="well confident-message m-t-1 m-b-0">
+                    <ul class="list-default m-b-0" data-bind="foreach: messageItemList()">
+                        <li data-bind="html: $data.text, css: $data.className" class="chosen-to-pay-by">Bạn đã đặt dich vụ <%= @service.name %> ngày 13/12/2019</li>
+                        <li data-bind="html: $data.text, css: $data.className" class="note-that-choosing-to-pay-by">Chi tiết phòng: </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
