@@ -24,6 +24,7 @@ class ServicesController < ApplicationController
     @phonenumber = params[:phonenumber]
     redirect_to "/services/"+ params[:id] +"/payment"
   end
+  
   private
   def load_services_by_category
     if params[:category_id]

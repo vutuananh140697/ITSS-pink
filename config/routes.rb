@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get "services/:id/confirm" , to: "services#confirm", :as => :service_confirm
   get "services/:id" , to: "services#show", :as => :service_details
   post "services/:id/save/info", to: "services#save_info", :as => :service_save_info
+  get "services/:id" , to: "services#show", :as => :service_details
   resources :service_reviews, only: %i(create destroy)
 end
