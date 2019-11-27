@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get "/search", to: "home#search"
   get "services", to: "services#index"
   get "services/categories/:category_id", to: "services#index", :as => :service_categories
+  get "services/:id/book" , to: "services#book", :as => :service_book
+  get "services/:id/payment" , to: "services#payment", :as => :service_payment
+  get "services/:id/confirm" , to: "services#confirm", :as => :service_confirm
+  get "services/:id" , to: "services#show", :as => :service_details
+  post "services/:id/save/info", to: "services#save_info", :as => :service_save_info
   get "services/:id" , to: "services#show", :as => :service_details
   resources :service_reviews, only: %i(create destroy)
 end

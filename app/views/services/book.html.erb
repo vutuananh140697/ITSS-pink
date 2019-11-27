@@ -1,0 +1,117 @@
+<% provide(:title,"Rooms")%>
+<body style="background: #eef3f7">
+  <div class="row">
+    <div class="md-stepper-horizontal orange">
+      <div class="md-step active">
+        <div class="md-step-circle"><span>1</span></div>
+        <div class="md-step-title">Thông tin khách hàng</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step">
+        <div class="md-step-circle"><span>2</span></div>
+        <div class="md-step-title">Chi tiết thanh toán</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step">
+        <div class="md-step-circle"><span>3</span></div>
+        <div class="md-step-title">Đã xác nhận đặt dịch vụ!</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" >
+      <div class="col-md-8">
+        <div class=" review_listing">
+          <h3>Chọn cách thanh toán</h3>
+          <hr>
+          <div class="radio">
+            <label><input type="radio" name="optradio" checked style="width: auto;">  Thanh toán sau</label>
+          </div>
+          <hr>
+          <div class="radio">
+            <label><input type="radio" name="optradio" style="width: auto;">  Thanh toán ngay</label>
+          </div>
+          <p>Bạn cũng có thể chọn Thanh toán ngay bằng Paypal ở bên dưới.</p>
+          <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6BxA5RfMz5ZnCLJw_1S7-iWYNlt6aJfYolVCR-sVOAEtxg_1ayg&s" alt="Smiley face" height="32"></a>
+        </div>
+        <div class="review_listing">
+          <h3>Vui lòng điền thông tin của bạn</h3>
+          <hr>
+          <form method="POST" action="/services/<%= @service.id %>/save/info">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <div class="form-group">
+              <label for="usr">Họ và tên như trong hộ chiếu (*)</label>
+              <input type="text" name="username" class="form-control" id="usr">
+            </div>
+            <div class="form-group">
+              <label for="usr">Email (*)</label>
+              <input type="text" class="form-control" name="email" placeholder="Kiểm tra kĩ lỗi chính tả">
+            </div>      
+            <div class="form-group">
+              <label for="usr">Số điện thoại </label>
+              <input type="text" name="phonenumber" class="form-control" id="usr">
+            </div>  
+            <button type="submit" class="btn btn-outline-success">TIẾP TỤC</button>
+          </form>
+    		</div>        
+  		</div>
+  		<div class="col-md-4">
+        <div class=" review_listing" style="display: flex">
+          <a href="">
+            <% @service.service_images.each_with_index do |img, i| %>
+            <% if(i == 0) %>
+              <%=link_to image_tag(img.link, width: "100", height: "130"), "#", width: "100px"  %>
+            <% end %>
+            <% end %>
+            </a>
+          <div style="margin-left: 10px">
+            <h4><b><%= @service.name %></b></h4>
+            <p>Provider: <%= @service.provider.name %></p>
+            <p>Start time: <% if @service.start_time %>
+                                <%= @service.start_time.strftime("%B %d, %Y") %>
+                            <% end %></p>
+            <p>End time: <% if @service.end_time %>
+                            <%= @service.end_time.strftime("%B %d, %Y") %>
+                        <% end %></p>
+          </div>
+        </div>  
+        <div class=" review_listing">
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Giá gốc</h4>
+            </div>
+            <div class="col-md-6">
+              <h4><b><%= number_to_currency(@service.price) %></b></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Giảm giá</h4>
+            </div>
+            <div class="col-md-6">
+              <h4><b>$0</b></h4>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Giá tiền</h4>
+            </div>
+            <div class="col-md-6">
+              <h4 style="color: #00becc"><b><%= number_to_currency(@service.price) %></b></h4>
+            </div>
+          </div>   
+          <div class="row">
+            <div class="col-md-12">
+              <p style="opacity: 0.5"><b>Giá trên đã bao gồm:</b> Phí dịch vụ 10%, Thuế 10%</p>
+            </div>
+          </div>
+        </div>          
+  		</div>
+    </div>
+  </div>
+</body>

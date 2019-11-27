@@ -58,7 +58,7 @@
                             <% end %>
                         </h5>
                         <h2 class="text-left text-blue price-ht">USD <span class="text-yellow"><%= service.price %></span></h2>
-                        <a href="#" class="btn btn-yellow btn-select-room"><%= t "Book_now" %></a>
+                        <a href="/services/<%= service.id %>/book" class="btn btn-yellow btn-select-room"><%= t "Book_now" %></a>
                     </div>
                     <div class="col-xs-12 no-padding hotel-slide-pay">
                         <p class="text-blue"><%= t "cards_accepted" %></p>
