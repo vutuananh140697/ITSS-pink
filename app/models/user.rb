@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   has_many :schedules, dependent: :destroy
   has_many :service_reviews, dependent: :destroy
+  has_many :service_bookings
   
   def self.new_with_session params, session
     super.tap do |user|

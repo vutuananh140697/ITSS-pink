@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191120153801) do
+ActiveRecord::Schema.define(version: 20191127023510) do
+
+  create_table "booking_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "places", force: :cascade do |t|
@@ -78,8 +90,17 @@ ActiveRecord::Schema.define(version: 20191120153801) do
   create_table "service_bookings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "service_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "booking_user"
+    t.text     "booking_address"
+    t.integer  "quantity"
+    t.float    "unit_price"
+    t.float    "total_price"
+    t.integer  "payment_method_id"
+    t.integer  "booking_status_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["booking_status_id"], name: "index_service_bookings_on_booking_status_id"
+    t.index ["payment_method_id"], name: "index_service_bookings_on_payment_method_id"
     t.index ["service_id"], name: "index_service_bookings_on_service_id"
     t.index ["user_id"], name: "index_service_bookings_on_user_id"
   end
