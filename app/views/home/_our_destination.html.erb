@@ -15,7 +15,7 @@
       <div class="col-xs-12 col-sm-6 col-md-4 package_item">
         <div class="package_item_content">
           <% if travel_place.image_url %>
-            <%=link_to image_tag(travel_place.image_url,alt: "#{travel_place.name}", class: "img-responsive custom-size-image"),"#" %>
+            <%=link_to image_tag(travel_place.image_url,alt: "#{travel_place.name}", class: "img-responsive custom-size-image"), services_in_place_path(travel_place.id) %>
           <% end %>
           <div class="thumb_content fullwidth">
                 <div class="thumb_title">

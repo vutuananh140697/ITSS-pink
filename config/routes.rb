@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :service_reviews, only: %i(create destroy)
   get "service_bookings/payment" , to: "service_bookings#payment", :as => :service_payment
   resources :service_bookings
+  get "services_in_place/:place_id", to: "services#services_in_place", :as => :services_in_place
  
 end

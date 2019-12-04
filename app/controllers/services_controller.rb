@@ -15,6 +15,10 @@ class ServicesController < ApplicationController
     @service = Service.find_by id: params[:id]
   end 
   
+  def services_in_place
+      @services = Service.get_services_in_place(params[:place_id]).page(params[:page]).order('price DESC').per(Settings.page.num_of_services)
+  end
+  
   private
   def load_services_by_category
     if params[:category_id]
