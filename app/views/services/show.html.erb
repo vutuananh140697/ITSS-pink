@@ -5,6 +5,13 @@
     <div class="col-xs-12 col-sm-12 page-right">
       <div class="filter-result">
         <%= render :partial => "detail", :locals => {:service => @service} %>
+        <% if user_signed_in? %>
+          <%= render "service_bookings/booking_form" %>
+        <% end %>
+        <div class="hotellist-item hotel-detail">
+            <strong><h2><%= t "DESCRIPTION" %></h2></strong>
+            <%= @service.description %>
+        </div>
         <div class="hotellist-item hotel-detail">
           <strong><h2><%= t "reviews" %></h2></strong>
           <div class = "container">

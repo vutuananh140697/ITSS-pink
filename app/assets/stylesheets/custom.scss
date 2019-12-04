@@ -276,6 +276,7 @@ input, textarea, select, .uneditable-input {
   width: 60px !important;
   height: 60px !important;
 }
+
 // step
 .md-stepper-horizontal {
 	display:table;
@@ -406,6 +407,24 @@ input, textarea, select, .uneditable-input {
     margin-bottom: 30px;
     margin-top:10px;
 }
+
 input[type=radio]{
   transform:scale(1.5);
+}
+
+.success-text{
+  color: green;
+}
+
+.jumbotron{
+   margin-bottom: 0px !important; 
+}
+
+.radio-selections{
+ display:inline-block;
+}
+
+.resize-slide{
+  height: 500px !important;
+  width: 100% !important;
 }

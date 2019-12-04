@@ -1,7 +1,7 @@
 <% provide(:title,"Rooms")%>
 <body style="background: #eef3f7">
   <div class="row">
-   <div class="md-stepper-horizontal orange">
+    <div class="md-stepper-horizontal orange">
       <div class="md-step ok">
         <div class="md-step-circle"><span>1</span></div>
         <div class="md-step-title">User information</div>
@@ -30,8 +30,8 @@
                 <hr>
                 <div class="well confident-message m-t-1 m-b-0">
                     <ul class="list-default m-b-0" data-bind="foreach: messageItemList()">
-                        <li data-bind="html: $data.text, css: $data.className" class="chosen-to-pay-by">You booked this service<%= @service.name %> at <%= Time.now %></li>
-                    <!--    <li data-bind="html: $data.text, css: $data.className" class="note-that-choosing-to-pay-by"></li>-->
+                         <li data-bind="html: $data.text, css: $data.className" class="chosen-to-pay-by">You booked this service<%= @booking.service.name %> at <%= Time.now %></li>
+                       <!-- <li data-bind="html: $data.text, css: $data.className" class="note-that-choosing-to-pay-by"></li>-->
                     </ul>
                 </div>
                 <hr>

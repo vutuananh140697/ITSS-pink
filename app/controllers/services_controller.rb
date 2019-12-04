@@ -4,26 +4,16 @@ class ServicesController < ApplicationController
   def index
     @categories = Category.all
   end
+
   def show
     @service = Service.find_by id: params[:id]
     @service_reviews = @service.service_reviews.order('created_at DESC').page(params[:page]).per(Settings.page.num_of_reviews)
     redirect_to root_url if @service.nil?
   end
-  def book
-    @service = Service.find_by id: params[:id]
-  end  
-  def payment
-    @service = Service.find_by id: params[:id]
-  end  
+
   def confirm
     @service = Service.find_by id: params[:id]
   end 
-  def save_info
-    @name = params[:username]
-    @email = params[:email]
-    @phonenumber = params[:phonenumber]
-    redirect_to "/services/"+ params[:id] +"/payment"
-  end
   
   private
   def load_services_by_category
